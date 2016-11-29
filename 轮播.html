@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+		margin: 0px;
+		padding: 0px;
+	}
+		#all{
+			width: 500px;
+			position: relative;
+			overflow: hidden;
+			margin-left: 200px;
+		}
+		ul{
+			width: 2000px;
+			position: relative;
+			overflow: hidden;
+			
+		}
+		li{
+			list-style: none;
+			float: left;
+		}
+
+		#foot{
+			position: absolute;
+			width: 150px;
+			left: 360px;
+			top: 232px;
+
+		}
+		img{
+			width: 500px;
+		}
+		span:hover {
+			cursor: pointer;
+			background-color: green;
+		}
+		span{
+			text-align: center;
+			width: 20px;
+			height: 20px;
+			margin-left: 10px;
+			float: left;
+			border: 1px solid blue;
+			background-color: white;
+			color: blue;
+		}
+	</style>
+</head>
+<body>
+<div id="all">
+	<div id="cont">
+		<ul style="left:0px;">
+			
+			<li><img src="img/1.jpg"></li>
+			<li><img src="img/2.jpg"></li>
+			<li><img src="img/3.jpg"></li>
+			<li><img src="img/4.jpg"></li>
+			
+		</ul>
+		</div>
+		<div id="foot">
+			<span index="0">1</span>
+			<span index="1">2</span>
+			<span index="2">3</span>
+			<span index="3">4</span>
+		</div>
+	
+</div>
+</body>
+<script type="text/javascript">
+	var ul=document.getElementsByTagName('ul')[0]
+	var span=document.getElementsByTagName('span')
+	var all=document.getElementById('all')
+	for(i=0;i<span.length;i++){
+
+		span[i].onclick=function(){
+			var x=this.getAttribute('index')
+			ul.style.left=x*(-500)+"px"
+			console.log(x)
+
+		}
+	}
+	var i=0
+	set=setInterval(function(){
+			i++
+			ul.style.left=i*(-500)+"px"
+			if(i==3){
+				i=-1;
+			}
+		},1000)
+
+	  all.onmouseout=function(){ 
+	  		set=setInterval(function(){
+				i++
+				ul.style.left=i*(-500)+"px"
+				if(i==3){
+				i=-1;
+				}
+		},1000)
+
+	  }
+	all.onmouseover=function(){
+		clearInterval(set)
+	}	
+</script>
+</html>
